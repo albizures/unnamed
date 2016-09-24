@@ -1,0 +1,15 @@
+.model-teeth.big
+  div
+    input(type='checkbox', ng-model='isBig', ng-init='isBig = true')
+    .content-model
+      img(ng-src='{{url}}')
+      .content-areas
+        button.area(
+          ng-repeat='area in areas',
+          ng-style='area',
+          ng-attr-id='{{area.key}}'
+          uib-popover='I have a title!',
+          popover-title='The title.',
+          popover-trigger='"outsideClick"',
+          type='button'
+        )
