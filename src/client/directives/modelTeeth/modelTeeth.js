@@ -46,6 +46,8 @@ exports.fn = function () {
   function link(/*scope, element, attrs*/) {
     
   }
+  
+  /*@ngInject*/
   function controller($scope) {
     setStatus($scope.isBig);
     $scope.$watch('isBig', function (oldVal, newVal) {

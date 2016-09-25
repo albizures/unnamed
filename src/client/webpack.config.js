@@ -36,7 +36,7 @@ module.exports = {
     loaders: [{
       test: /\.js$/,
       include: config.CLIENT_PATH,
-      loader: "babel"
+      loader: 'ng-annotate?map=false!babel'
     }, {
       test: /\.(jpg|jpeg|png|gif|svg)$/i,
       loaders: [
