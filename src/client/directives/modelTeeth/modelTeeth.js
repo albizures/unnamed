@@ -41,7 +41,7 @@ exports.fn = function () {
     {key: 't31', width: '30px', height: '28px', top: '220px', left: '100px', 'border-radius': '11px 11px 10px 12px'}
   ];
 
-  smallAreas = [];
+  let smallAreas = [];
 
   function link(/*scope, element, attrs*/) {
     

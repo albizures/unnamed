@@ -28,6 +28,10 @@ var defaultStatsOptions = {
   errorDetails: false
 };
 
+gulp.task('build-env', shell.task([
+  `export NODE_ENV='production'`
+]));
+
 
 gulp.task('env', shell.task([
   `./env.sh`
@@ -74,7 +78,7 @@ gulp.task('inject:js', function () {
     .pipe(gulp.dest('./client'));
 });
 
-gulp.task('clean', function (cb) {
+gulp.task('clean', function () {
   webpackConfig = require('./src/client/webpack.config.js');
   return gulp.src(webpackConfig.output.path, {read: false})
     .pipe(clean());
@@ -91,5 +95,5 @@ gulp.task('default', ['env', 'server'], function () {
     .pipe(open(options));
 });
 
-gulp.task('build', ['env', 'webpack']);
+gulp.task('build', ['build-env', 'webpack']);
 

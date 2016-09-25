@@ -6,6 +6,7 @@ const config = {};
 
 config.PORT = process.env.PORT || 8888;
 
+config.isProd = process.env.NODE_ENV === 'production';
 config.isDev = process.env.NODE_ENV === 'development';
 config.secret = process.env.SECRET || 'super duper secret for unnamed';
 config.ROOT_PATH = path.join(__dirname, '..', '..', '..', '..');

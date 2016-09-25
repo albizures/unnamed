@@ -4,9 +4,10 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require('path');
 const config = require('../server/config/environment');
 
+let und;
 module.exports = {
   watch: config.isDev,
-  devtool: 'source-map',
+  devtool: config.isDev ? 'source-map' : und, 
   entry: [
     config.APP_PATH
   ],
@@ -17,7 +18,6 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin("styles.css"),
-    //new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'unnamed',
       filename: 'index.html',
