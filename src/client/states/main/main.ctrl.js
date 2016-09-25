@@ -1,5 +1,0 @@
-
-/*@ngInject*/
-module.exports = function () {
-  
-};
