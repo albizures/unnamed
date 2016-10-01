@@ -1,0 +1,16 @@
+section(layout="row", flex, style='height: 100%;')
+  md-sidenav.md-sidenav-left(md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="2")
+     md-list(flex)
+      md-list-item.md-1-line(ui-sref='.roles', ui-sref-active="active")
+        | Roles
+      md-list-item.md-1-line(ui-sref='.states', ui-sref-active="active")
+        | Estados
+      md-list-item.md-1-line(ui-sref='.options', ui-sref-active="active")
+        | Opciones
+      md-list-item.md-1-line(ui-sref='.orgs', ui-sref-active="active")
+        | Organizaciones
+      md-list-item.md-1-line(ui-sref='.users', ui-sref-active="active")
+        | Usuarios
+  md-content(flex='', layout-padding='')
+    ui-view
+    div(flex='')

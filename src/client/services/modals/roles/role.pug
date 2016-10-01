@@ -1,0 +1,11 @@
+extends ../layout.pug
+include ../../../template/mixins.pug
+
+block body
+  .md-inline-form
+    +form('form','submitFrom(form)', 'Guardar')
+      .row
+        .col-xs-12
+          +formGroup('name', 'role', 'form', 'text')
+          +formGroup('description', 'role', 'form', 'text')
+  

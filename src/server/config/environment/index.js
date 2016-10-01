@@ -23,7 +23,7 @@ config.db = {
   database: process.env.NAME_DB || 'unnamed',
   host: 'localhost',
   user: process.env.USER_DB || 'root',
-  password: process.env.PASS_DB || ''
+  password: process.env.PASS_DB || 'root'
 };
 
 if (config.isDev) {

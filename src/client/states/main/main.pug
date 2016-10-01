@@ -1,2 +1,20 @@
-div
-  model-teeth
+section(layout="row", flex)
+  md-sidenav.md-sidenav-left(md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4")
+     md-list(flex)
+      md-list-item.md-1-line(ng-click="null")
+        | roles
+      md-list-item.md-1-line(ng-click="null")
+        | estados
+  md-content(flex='', layout-padding='')
+    div(layout='column', layout-align='top center')
+      p
+        | The left sidenav will 'lock open' on a medium (>=960px wide) device.
+      p
+        | The right sidenav will focus on a specific child element.
+      div
+        md-button.md-primary(ng-click='toggleLeft()', hide-gt-md='')
+          | Toggle left
+      div
+        md-button.md-primary(ng-click='toggleRight()', ng-hide='isOpenRight()')
+          | Toggle right
+    div(flex='')

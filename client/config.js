@@ -1,8 +1,15 @@
 
 const moment = require('moment');
 
+module.exports = function (APP) {
+  APP.config(main);
+  
+  require('./states/sys')(APP);
+};
+
+
 /*@ngInject*/
-module.exports = function($urlRouterProvider, $locationProvider) {
+function main ($urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
   $locationProvider.html5Mode(true);
   moment.locale("es");
@@ -10,6 +17,10 @@ module.exports = function($urlRouterProvider, $locationProvider) {
 
 
 
+
 // injector
 APP.config(require('./states/main/index.js'));
+APP.config(require('./states/sys/index.js'));
+APP.config(require('./states/sys/roles/index.js'));
+APP.config(require('./states/sys/states/index.js'));
 // endinjector

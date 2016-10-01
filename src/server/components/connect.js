@@ -4,7 +4,7 @@ const defer = require('./utils/defer.js');
 const config = require('../config/environment');
 
 let pool = mysql.createPool(
-  Object.assign({}, config.db, {connectionLimit : 10})
+  Object.assign({}, config.db, {connectionLimit: 10})
 );
 
 pool.on('enqueue', function () {
@@ -18,11 +18,12 @@ pool.on('error', function () {
 
 
 exports.query = function (query, data) {
-  let {defer, resolve, reject} = defer.createDefer();
+  let {promise, resolve, reject} = defer.createDefer();
 
   pool.query(query, data, onQuery);
 
   function onQuery(err, rows) {
+
     if (err) {
       console.log(query, data, err);
       return reject(err);
@@ -30,5 +31,8 @@ exports.query = function (query, data) {
     resolve(rows);
   }
 
-  return defer;
+  return promise;
 };
+
+
+exports.insert = (query, data) => exports.query('select ' + query + ' as id', data);

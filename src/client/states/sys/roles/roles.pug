@@ -1,0 +1,39 @@
+div
+  md-card
+    md-toolbar.md-table-toolbar.md-default(ng-hide='selected.length || filter.show')
+      .md-toolbar-tools
+        h2.md-title Roles
+        div(flex='')
+        md-button.md-icon-button(ng-click='filter.show = true')
+          md-icon filter_list
+        md-button.md-icon-button(ng-click='add($event)')
+          md-icon add
+    md-toolbar.md-table-toolbar.md-default(ng-show='filter.show && !selected.length')
+      .md-toolbar-tools
+        md-icon search
+        form(flex='', name='filter.form')
+          input(type='text', ng-model='query.filter', ng-model-options='filter.options', placeholder='buscar...')
+        md-button.md-icon-button(ng-click='removeFilter()')
+          md-icon close
+    md-toolbar.md-table-toolbar.alternate(ng-show='selected.length')
+      .md-toolbar-tools
+        div {{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected
+        span
+          md-button.md-icon-button(ng-click='edit($event)')
+            md-icon edit
+          md-button.md-icon-button(ng-click='delete($event)')
+            md-icon delete
+
+    md-table-container
+      table(md-table, md-row-select, ng-model="selected", md-progress="promise")
+        thead(md-head, md-order="query.order")
+          tr(md-row)
+            th(md-column, md-numeric, width=30) ID
+            th(md-column, md-order-by="name") Nombre
+            th(md-column, md-order-by="description") Descripcion {{description}}
+        tbody(md-body)
+          tr(md-row, md-select="role", ng-repeat="role in roles | orderBy:query.order | filter: {name: query.filter, description: query.filter}")
+            td(md-cell) {{role.id_role}}
+            td(md-cell) {{role.name}}
+            td(md-cell) {{role.description}}
+    md-table-pagination(md-limit='query.limit', md-limit-options='[5, 10, 15]', md-page='query.page', md-total='{{desserts.count}}', md-on-paginate='getDesserts', md-page-select='')

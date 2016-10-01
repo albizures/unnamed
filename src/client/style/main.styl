@@ -1,5 +1,10 @@
-@import '~bootstrap/dist/css/bootstrap.css'
+// @import '~bootstrap/dist/css/bootstrap.css'
 
+//-body
+//-  padding-top 70px
+md-list-item.active
+  background #303F9F
+  color white
 .model-teeth
   .content-model
     width 400px
@@ -22,3 +27,24 @@
       top 0
       left 0
       position absolute
+
+md-toolbar.md-table-toolbar
+  form
+    margin-left: 16px;
+    & > input
+      width 100%
+      margin 0
+      border none
+      color rgba(0, 0, 0, 0.87)
+      &:focus 
+        outline none
+  .ng-hide 
+    display none
+
+  &.alternate 
+    .md-toolbar-tools
+      color: #1e88e5;
+      font-size: 16px;
+      justify-content: space-between
+      background-color: #e3f2fd;
+

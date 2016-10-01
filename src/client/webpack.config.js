@@ -17,12 +17,19 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
-    new ExtractTextPlugin("styles.css"),
+    new ExtractTextPlugin('[name].css', {
+      allChunks: true
+    }),
     new HtmlWebpackPlugin({
       title: 'unnamed',
       filename: 'index.html',
       template: config.MAIN_TEMPLATE
-    })
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor.js',
+      minChunks: isExternal
+    }),
   ].concat(config.isProd ? [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -45,10 +52,10 @@ module.exports = {
       ]
     }, {
       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      loader: 'file?name=/assets/fonts/[name].[ext]'
+      loader: 'file?name=assets/fonts/[name].[ext]'
     }, {
       test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      loader: 'file?name=/assets/fonts/[name].[ext]'
+      loader: 'file?name=assets/fonts/[name].[ext]'
     }, {
       test: /\.pug$/,
       loader: 'pug'
@@ -81,3 +88,14 @@ module.exports = {
     root: config.MODULES_PATH
   }
 };
+
+function isExternal(module) {
+  var userRequest = module.userRequest;
+  if (typeof userRequest !== 'string') {
+    return false;
+  }
+  if (userRequest.indexOf(/\.css?$/) >= 0) {
+    return false;
+  }
+  return userRequest.indexOf('/node_modules/') >= 0;
+}
