@@ -9,17 +9,6 @@ mixin formGroup(name, model, form, type, nameUp)
       required,
       disabled=attributes.disabled
     )
-
-  //- .form-group(ng-class="{'has-error' : #{form}.#{name}.$invalid && #{form}.#{name}.$touched}")
-  //-   label.control-label(for='#{form}_#{name}') #{nameUp}:
-  //-   input.form-control(
-  //-     id="#{form}_#{name}",
-  //-     type='#{type}',
-  //-     ng-model='#{model}.#{name}',
-  //-     name='#{name}',
-  //-     placeholder='#{nameUp}',
-  //-     ng-required='true'
-  //-   )
 mixin formGroupSelect(name, model, form, options, nameUp)
   - nameUp = nameUp || name[0].toUpperCase() + name.slice(1);
   - var formName = form + '.' + name;
