@@ -10,6 +10,30 @@ function albApi($mdToast, $http) {
   const a = {};
 
 
+  a.configTable = function ($scope) {
+    $scope.selected = [];
+    $scope.filter = {
+      options: {
+        debounce: 500
+      }
+    };
+    $scope.limitOptions = [5, 10, 15];
+    $scope.query = {
+      order: 'name',
+      limit: 5,
+      page: 1
+    };
+
+    $scope.removeFilter = function () {
+      $scope.filter.show = false;
+      $scope.query.filter = '';
+      
+      if ($scope.filter.form.$dirty) {
+        $scope.filter.form.$setPristine();
+      }
+    };
+  };
+
 
   function openToast(msg, type) {
     type = type || a.toast.INFO;
@@ -43,6 +67,7 @@ function albApi($mdToast, $http) {
   a.states = require('./states.js')($http);
   a.orgs = require('./orgs.js')($http);
   a.users = require('./users.js')($http);
+  a.types = require('./types.js')($http);
 
   return a;
 }

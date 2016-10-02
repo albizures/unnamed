@@ -2,12 +2,13 @@ include ../../../template/mixins/table.pug
 
 div
   +table_crud(
-    'Roles',
-    'roles',
+    'Organizaciones',
+    'orgs',
     [
       {name: 'ID',     model: 'id_state', isNumber: true, width: 50},
       {name: 'Nombre', model: 'name'},
-      {name: 'Descripcion', model: 'description'}
+      {name: 'Descripcion', model: 'description'},
+      {name: 'Tipo', model: 'id_tipo'},
     ],
     '{name: query.filter, description: query.filter}'
   )

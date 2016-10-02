@@ -10,10 +10,10 @@ module.exports = function ($http) {
   a.getOne = id => $http.get('/api/users/' + id);
 
   // ################ PUT's ################
-  a.put = (id, user) => $http.get('/api/users/' + id, user);
+  a.put = (id, user) => $http.put('/api/users/' + id, user);
 
   // ################ DELETE's ################
-  a.delete = id => $http.get('/api/users/' + id);
+  a.delete = id => $http.delete('/api/users/' + id);
 
   return a;
 };

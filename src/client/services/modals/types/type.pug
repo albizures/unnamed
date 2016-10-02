@@ -1,0 +1,10 @@
+extends ../layout.pug
+
+block body
+  .md-inline-form
+    +form('form','submitFrom(form)', 'Guardar')
+      .row
+        .col-xs-12
+          +formGroup('name', 'type', 'form', 'text', 'Nombre')
+          +formGroup('description', 'type', 'form', 'text', 'Descripcion')
+          +formGroup('table_name', 'type', 'form', 'text', 'Tabla', edit)

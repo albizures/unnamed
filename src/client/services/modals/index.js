@@ -24,7 +24,6 @@ function albModals($rootScope, $timeout, $mdPanel) {
       {close},
       options.scope
     );
-    console.log($mdPanel.newPanelAnimation());
     options.animation = $mdPanel.newPanelAnimation()
       .openFrom(options.targetEvent)
       .withAnimation($mdPanel.animation.SCALE);
@@ -40,7 +39,6 @@ function albModals($rootScope, $timeout, $mdPanel) {
     options.locals.modalTimer = modalTimer;
     options.onDomRemoved = resolve;
     let modalInstance = $mdPanel.open(options);
-    modalInstance.then(ref => console.log(ref));
     function close() {
       modalInstance.$$state.value.close();
     }
@@ -65,6 +63,53 @@ function albModals($rootScope, $timeout, $mdPanel) {
       resolve: {id},
       scope: {
         modal: {title: 'Editar rol'}
+      } 
+    });
+  };
+
+  a.openAddState = function (evt) {
+    return openModal({
+      targetEvent: evt,
+      template: require('./states/state.pug')({edit: false}),
+      controller: require('./states/addState/addState.ctrl.js'),
+      scope: {
+        modal: {title: 'Agregar Estado'}
+      } 
+    });
+  };
+
+  a.openEditState = function (evt, id) {
+    return openModal({
+      targetEvent: evt,
+      template: require('./states/state.pug')({edit: true}),
+      controller: require('./states/editState/editState.ctrl.js'),
+      resolve: {id},
+      scope: {
+        modal: {title: 'Editar Estado'}
+      } 
+    });
+  };
+
+
+  a.openAddType = function (evt) {
+    return openModal({
+      targetEvent: evt,
+      template: require('./types/type.pug')({edit: false}),
+      controller: require('./types/addType/addType.ctrl.js'),
+      scope: {
+        modal: {title: 'Agregar tipo'}
+      } 
+    });
+  };
+
+  a.openEditType = function (evt, id) {
+    return openModal({
+      targetEvent: evt,
+      template: require('./types/type.pug')({edit: true}),
+      controller: require('./types/editType/editType.ctrl.js'),
+      resolve: {id},
+      scope: {
+        modal: {title: 'Editar tipo'}
       } 
     });
   };

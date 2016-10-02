@@ -1,35 +1,13 @@
 
 /*@ngInject*/
 module.exports = function ($scope, albModals, albApi) {
-
-  $scope.selected = [];
-  $scope.filter = {
-    options: {
-      debounce: 500
-    }
-  };
-  $scope.limitOptions = [5, 10, 15];
-  $scope.query = {
-    order: 'name',
-    limit: 5,
-    page: 1
-  };
-
-  $scope.removeFilter = function () {
-    $scope.filter.show = false;
-    $scope.query.filter = '';
-    
-    if ($scope.filter.form.$dirty) {
-      $scope.filter.form.$setPristine();
-    }
-  };
+  albApi.configTable($scope);
 
   $scope.add = function (evt) {
     albModals.openAddRole(evt).then($scope.getRoles);
   };
 
   function onGet(result) {
-    console.log(result);
     $scope.roles = result;
   }
   $scope.getRoles = function () {

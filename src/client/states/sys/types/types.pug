@@ -2,10 +2,10 @@ include ../../../template/mixins/table.pug
 
 div
   +table_crud(
-    'Estados',
-    'states',
+    'Tipos',
+    'types',
     [
-      {name: 'ID',     model: 'id_state', isNumber: true, width: 50},
+      {name: 'ID',     model: 'id_type_db', isNumber: true, width: 50},
       {name: 'Nombre', model: 'name'},
       {name: 'Descripcion', model: 'description'},
       {name: 'Tabla', model: 'table_name'},

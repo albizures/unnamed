@@ -7,42 +7,43 @@ const connect = require("../../components/connect.js");
  * @param {Number} id
  */
 exports.getOne = function(id) {
-  return connect.query('call sp_sel_sys_role_id( ? )', id)
+  return connect.query('call sp_sel_sys_state_id( ? )', id)
     .then(rows => rows[0][0]);
 };
 
 /**
  * getAll
  * 
- * @desc devuelve todos los roles
+ * @desc devuelve todos los estados
  */
 exports.getAll = function() {
-  return connect.query('call sp_sel_sys_role')
+  return connect.query('call sp_sel_sys_state')
     .then(rows => rows[0]);
 };
 
 /**
  * post
  * 
- * @desc agrega un nuevo rol
- * @param {Object[]} data [name, description]
+ * @desc agrega un nuevo estado
+ * @param {Object[]} data [name, description, table]
  */
 exports.post = function(data) {
   return connect.insert(
-    'fn_ins_sys_role( ?, ? )',
+    'fn_ins_sys_state( ?, ?, ? )',
     data
   ).then(rows => rows[0].id);
 };
 
+
 /**
  * delete
  * 
- * @desc elimina un rol
+ * @desc elimina un estado
  * @param {Number} id
  */
 exports.delete = function (id) {
   return connect.query(
-    'call sp_del_sys_role ( ? )',
+    'call sp_del_sys_state ( ? )',
     id
   ).then(rows => rows[0]);
 };
@@ -50,12 +51,12 @@ exports.delete = function (id) {
 /**
  * put
  * 
- * @desc edita un rol
- * @param {Object[]} data [id, name, description]
+ * @desc edita un estado
+ * @param {Object[]} data [id, name, description, table]
  */
 exports.put = function (data) {
   return connect.query(
-    'call sp_upd_sys_role ( ?, ?, ?)',
+    'call sp_upd_sys_state ( ?, ?, ?, ?)',
     data
   ).then(rows => rows[0]);
 };
