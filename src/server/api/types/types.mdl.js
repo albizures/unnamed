@@ -1,6 +1,17 @@
 const connect = require("../../components/connect.js");
 
 /**
+ * getByTable
+ * 
+ * @desc devuelve los tipos de una tabla
+ * @param {String} table
+ */
+exports.getByTable = function (table) {
+  return connect.query('call sp_sel_sys_type_table ( ? )', table).then(rows => rows[0]);
+};
+
+
+/**
  * getOne
  * 
  * @desc devuelve un solo elemento

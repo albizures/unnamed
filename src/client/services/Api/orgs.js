@@ -1,18 +1,18 @@
 
-module.exports = function ($http) {
+module.exports = function ($http, getData) {
   const a = {}; 
   // ################ POST's ################
-  a.post = org => $http.post('/api/orgs', org);
+  a.post = org => getData($http.post('/api/orgs', org));
 
   // ################ GET's ################
-  a.getAll = () => $http.get('/api/orgs');
-  a.getOne = id => $http.get('/api/orgs/' + id);
+  a.getAll = () => getData($http.get('/api/orgs'));
+  a.getOne = id => getData($http.get('/api/orgs/' + id));
 
   // ################ PUT's ################
-  a.put = (id, org) => $http.put('/api/orgs/' + id, org);
+  a.put = (id, org) => getData($http.put('/api/orgs/' + id, org));
 
   // ################ DELETE's ################
-  a.delete = id => $http.delete('/api/orgs/' + id);
+  a.delete = id => getData($http.delete('/api/orgs/' + id));
 
 
   return a;

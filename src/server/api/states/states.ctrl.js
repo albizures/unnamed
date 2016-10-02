@@ -1,5 +1,15 @@
 const model = require('./states.mdl.js');
 
+exports.getByTable = function (req, res) {
+  model.getByTable(req.params.table).then(result => {
+    res.json(result);
+  }).catch(err => {
+    console.log(err);
+    err.userMsg = 'Ocurrio un error al consultar los estados, intentelo de nuevo';
+    res.status(500).json(err);
+  });
+};
+
 exports.getAll = function (req, res) {
   model.getAll().then(result => {
     res.json(result);

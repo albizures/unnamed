@@ -9,6 +9,7 @@ module.exports = function ($scope, albModals, albApi) {
 
   function onGet(result) {
     $scope.orgs = result;
+    console.log(result);
   }
   $scope.get = function () {
     $scope.promise = albApi.orgs.getAll().then(onGet);
@@ -21,7 +22,7 @@ module.exports = function ($scope, albModals, albApi) {
 
   $scope.delete = function (evt) {
     let org = $scope.selected[0];
-    $scope.showConfirm(evt, 'Esta seguro de elimiar el rol ' + org.name)
+    $scope.showConfirm(evt, 'Esta seguro de elimiar la organizacion ' + org.name)
       .then(() => org.id_org)
       .then(albApi.orgs.delete)
       .then(() => $scope.selected.length = 0)

@@ -2,6 +2,7 @@ const router = require('express').Router();
 const controller = require('./types.ctrl.js');
 
 router.get('/', controller.getAll);
+router.get('/table/:table', controller.getByTable);
 router.get('/:id', controller.getOne);
 
 router.post('/', controller.post);

@@ -63,11 +63,13 @@ function albApi($mdToast, $http) {
     return result;
   };
 
-  a.roles = require('./roles.js')($http);
-  a.states = require('./states.js')($http);
-  a.orgs = require('./orgs.js')($http);
-  a.users = require('./users.js')($http);
-  a.types = require('./types.js')($http);
+  const getData = (request) => request.then(result => result.data);
+
+  a.roles = require('./roles.js')($http, getData);
+  a.states = require('./states.js')($http, getData);
+  a.orgs = require('./orgs.js')($http, getData);
+  a.users = require('./users.js')($http, getData);
+  a.types = require('./types.js')($http, getData);
 
   return a;
 }

@@ -1,5 +1,16 @@
 const model = require('./types.mdl.js');
 
+
+exports.getByTable = function (req, res) {
+  model.getByTable(req.params.table).then(result => {
+    res.json(result);
+  }).catch(err => {
+    console.log(err);
+    err.userMsg = 'Ocurrio un error al consultar los tipos, intentelo de nuevo';
+    res.status(500).json(err);
+  });
+};
+
 exports.getAll = function (req, res) {
   model.getAll().then(result => {
     res.json(result);

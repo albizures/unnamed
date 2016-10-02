@@ -1,18 +1,19 @@
 
-module.exports = function ($http) {
-  const a = {}; 
+module.exports = function ($http, getData) {
+  const a = {};
   // ################ POST's ################
-  a.post = state => $http.post('/api/states', state).then(result => result.data);
+  a.post = state => getData($http.post('/api/states', state));
 
   // ################ GET's ################
-  a.getAll = () => $http.get('/api/states').then(result => result.data);;
-  a.getOne = id => $http.get('/api/states/' + id).then(result => result.data);;
+  a.getByTable = (table) => getData($http.get('/api/states/table/' + table));
+  a.getAll = () => getData($http.get('/api/states'));
+  a.getOne = id => getData($http.get('/api/states/' + id));
 
   // ################ PUT's ################
-  a.put = (id, state) => $http.put('/api/states/' + id, state).then(result => result.data);;
+  a.put = (id, state) => getData($http.put('/api/states/' + id, state));
 
   // ################ DELETE's ################
-  a.delete = id => $http.delete('/api/states/' + id).then(result => result.data);;
+  a.delete = id => getData($http.delete('/api/states/' + id));
 
   return a;
 };

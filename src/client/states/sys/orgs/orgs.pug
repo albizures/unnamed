@@ -5,10 +5,11 @@ div
     'Organizaciones',
     'orgs',
     [
-      {name: 'ID',     model: 'id_state', isNumber: true, width: 50},
+      {name: 'ID',     model: 'id_org', isNumber: true, width: 50},
       {name: 'Nombre', model: 'name'},
       {name: 'Descripcion', model: 'description'},
-      {name: 'Tipo', model: 'id_tipo'},
+      {name: 'Tipo', model: 'type_name'},
+      {name: 'Estado', model: 'state_name'},
     ],
     '{name: query.filter, description: query.filter}'
   )

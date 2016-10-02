@@ -27,7 +27,8 @@ function albModals($rootScope, $timeout, $mdPanel) {
     options.animation = $mdPanel.newPanelAnimation()
       .openFrom(options.targetEvent)
       .withAnimation($mdPanel.animation.SCALE);
-    options.zIndex = 100;
+    options.zIndex = 70;
+    options.panelClass = 'alb-modal-' + options.size || 'sm',
     options.hasBackdrop = true,
     options.attachTo = angular.element(document.body),
     options.clickOutsideToClose = true;
@@ -51,7 +52,7 @@ function albModals($rootScope, $timeout, $mdPanel) {
       controller: require('./roles/addRole/addRole.ctrl.js'),
       scope: {
         modal: {title: 'Agregar rol'}
-      } 
+      },
     });
   };
 
@@ -111,6 +112,31 @@ function albModals($rootScope, $timeout, $mdPanel) {
       scope: {
         modal: {title: 'Editar tipo'}
       } 
+    });
+  };
+
+  a.openAddOrg = function (evt) {
+    return openModal({
+      targetEvent: evt,
+      template: require('./orgs/org.pug')(),
+      controller: require('./orgs/addOrg/addOrg.ctrl.js'),
+      scope: {
+        modal: {title: 'Agregar organizacion'}
+      },
+      size: 'md'
+    });
+  };
+
+  a.openEditOrg = function (evt, id) {
+    return openModal({
+      targetEvent: evt,
+      template: require('./orgs/org.pug')(),
+      controller: require('./orgs/editOrg/editOrg.ctrl.js'),
+      resolve: {id},
+      scope: {
+        modal: {title: 'Editar organizacion'}
+      },
+      size: 'md'
     });
   };
   return a;

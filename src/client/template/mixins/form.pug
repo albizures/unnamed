@@ -1,6 +1,6 @@
 mixin formGroup(name, model, form, type, nameUp, disabled)
   - nameUp = nameUp || name[0].toUpperCase() + name.slice(1);
-  md-input-container(class="md-block")
+  md-input-container.md-block
     label #{nameUp}
     input(
       ng-model=model + '.' + name,
@@ -20,17 +20,16 @@ mixin formGroup(name, model, form, type, nameUp, disabled)
   //-     placeholder='#{nameUp}',
   //-     ng-required='true'
   //-   )
-mixin formGroupSelect(name, model, form, options ,nameUp)
+mixin formGroupSelect(name, model, form, options, nameUp)
   - nameUp = nameUp || name[0].toUpperCase() + name.slice(1);
   - var formName = form + '.' + name;
   - var modelName = model + '.' + name;
-  .form-group(ng-class="{'has-error' : #{formName}.$invalid}")
-    label.control-label #{nameUp}:
-    select.form-control(
-      ng-options="#{options}",
-      ng-model="#{modelName}",
-      name='#{name}'
-    )
+  md-input-container.md-block
+    label #{nameUp}
+    md-select(ng-model=modelName)
+      md-option(ng-repeat=`item in ${options.model}` value=`{{item.${options.value}}}`)
+        | {{item.#{options.view}}}
+    br
 
 mixin formGroupRadio(name, model, form)
   - nameUp = nameUp || name[0].toUpperCase() + name.slice(1);

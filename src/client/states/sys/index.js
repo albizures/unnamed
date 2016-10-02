@@ -7,6 +7,7 @@ module.exports = function sys (APP) {
   APP.config(require('./roles'));
   APP.config(require('./states'));
   APP.config(require('./types'));
+  APP.config(require('./orgs'));
 };
 
 /*@ngInject*/
