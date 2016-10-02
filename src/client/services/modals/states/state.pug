@@ -5,6 +5,6 @@ block body
     +form('form','submitFrom(form)', 'Guardar')
       .row
         .col-xs-12
-          +formGroup('name', 'state', 'form', 'text', 'Nombre')
-          +formGroup('description', 'state', 'form', 'text', 'Descripcion')
-          +formGroup('table_name', 'state', 'form', 'text', 'Tabla', edit)
+          +formGroup('name', 'state', 'form', 'text', 'Nombre')(class='md-block')
+          +formGroup('description', 'state', 'form', 'text', 'Descripcion')(class='md-block')
+          +formGroup('table_name', 'state', 'form', 'text', 'Tabla', edit)(class='md-block')

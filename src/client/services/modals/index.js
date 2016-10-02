@@ -147,7 +147,7 @@ function albModals($rootScope, $timeout, $mdPanel) {
       scope: {
         modal: {title: 'Agregar opcion'}
       },
-      size: 'md'
+      size: 'lg'
     });
   };
 
@@ -160,7 +160,7 @@ function albModals($rootScope, $timeout, $mdPanel) {
       scope: {
         modal: {title: 'Editar opcion'}
       },
-      size: 'md'
+      size: 'lg'
     });
   };
   return a;

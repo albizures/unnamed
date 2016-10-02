@@ -5,9 +5,10 @@ block body
     +form('form','submitFrom(form)', 'Guardar')
       .row
         .col-xs-12
-          +formGroup('name', 'option', 'form', 'text', 'Nombre')
-          +formGroup('title', 'option', 'form', 'text', 'Titulo')
-          +formGroup('description', 'option', 'form', 'text', 'Descripcion')
-          +formGroup('order', 'option', 'form', 'number', 'Orden')
-          +formGroupSelect('id_type', 'option', 'form', {model: 'types', view: 'name', value: 'id_type'} ,'Tipo')
-          +formGroupSelect('id_state', 'option', 'form', {model: 'states', view: 'name', value: 'id_state'} ,'Estado')
+          +formGroup('name', 'option', 'form', 'text', 'Nombre')(class='md-block')
+          +formGroup('title', 'option', 'form', 'text', 'Titulo')(class='md-block')
+          +formGroup('description', 'option', 'form', 'text', 'Descripcion')(class='md-block')
+          div(layout-gt-sm="row")
+            +formGroup('order', 'option', 'form', 'number', 'Orden')
+            +formGroupSelect('id_type', 'option', 'form', {model: 'types', view: 'name', value: 'id_type'} ,'Tipo')
+            +formGroupSelect('id_state', 'option', 'form', {model: 'states', view: 'name', value: 'id_state'} ,'Estado')
