@@ -70,6 +70,7 @@ function albApi($mdToast, $http) {
   a.orgs = require('./orgs.js')($http, getData);
   a.users = require('./users.js')($http, getData);
   a.types = require('./types.js')($http, getData);
+  a.options = require('./options.js')($http, getData);
 
   return a;
 }

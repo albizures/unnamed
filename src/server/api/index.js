@@ -5,6 +5,7 @@ router.use('/roles/', require('./roles/'));
 router.use('/states/', require('./states/'));
 router.use('/types/', require('./types/'));
 router.use('/orgs/', require('./orgs/'));
+router.use('/options/', require('./options/'));
 
 router.use('/*', function (req, res) {
   res.status(404).end();

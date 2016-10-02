@@ -1,0 +1,13 @@
+extends ../layout.pug
+
+block body
+  .md-inline-form
+    +form('form','submitFrom(form)', 'Guardar')
+      .row
+        .col-xs-12
+          +formGroup('name', 'option', 'form', 'text', 'Nombre')
+          +formGroup('title', 'option', 'form', 'text', 'Titulo')
+          +formGroup('description', 'option', 'form', 'text', 'Descripcion')
+          +formGroup('order', 'option', 'form', 'number', 'Orden')
+          +formGroupSelect('id_type', 'option', 'form', {model: 'types', view: 'name', value: 'id_type'} ,'Tipo')
+          +formGroupSelect('id_state', 'option', 'form', {model: 'states', view: 'name', value: 'id_state'} ,'Estado')

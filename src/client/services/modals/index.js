@@ -139,5 +139,29 @@ function albModals($rootScope, $timeout, $mdPanel) {
       size: 'md'
     });
   };
+  a.openAddOption = function (evt) {
+    return openModal({
+      targetEvent: evt,
+      template: require('./options/option.pug')(),
+      controller: require('./options/addOption/addOption.ctrl.js'),
+      scope: {
+        modal: {title: 'Agregar opcion'}
+      },
+      size: 'md'
+    });
+  };
+
+  a.openEditOption = function (evt, id) {
+    return openModal({
+      targetEvent: evt,
+      template: require('./options/option.pug')(),
+      controller: require('./options/editOption/editOption.ctrl.js'),
+      resolve: {id},
+      scope: {
+        modal: {title: 'Editar opcion'}
+      },
+      size: 'md'
+    });
+  };
   return a;
 }
