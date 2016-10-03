@@ -1,0 +1,18 @@
+include ../../../template/mixins/table.pug
+
+div
+
+  +table_crud(
+    'Usuarios',
+    'users',
+    [
+      {name: 'ID',     model: 'id_user', isNumber: true, width: 50},
+      {name: 'Nombre', model: 'name'},
+      {name: 'Apellido', model: 'title'},
+      {name: 'Correo', model: 'email'},
+      {name: 'Rol', model: 'role_name'},
+      {name: 'Organizacion', model: 'org_name'},
+      {name: 'Estado', model: 'state_name'},
+    ],
+    '{name: query.filter, description: query.filter}'
+  )

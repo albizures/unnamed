@@ -9,6 +9,7 @@ module.exports = function sys (APP) {
   APP.config(require('./types'));
   APP.config(require('./orgs'));
   APP.config(require('./options'));
+  APP.config(require('./users'));
 };
 
 /*@ngInject*/

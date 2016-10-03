@@ -163,5 +163,30 @@ function albModals($rootScope, $timeout, $mdPanel) {
       size: 'lg'
     });
   };
+
+  a.openAddUser = function (evt) {
+    return openModal({
+      targetEvent: evt,
+      template: require('./users/user.pug')({edit: true}),
+      controller: require('./users/addUser/addUser.ctrl.js'),
+      scope: {
+        modal: {title: 'Agregar usuario'}
+      },
+      size: 'lg'
+    });
+  };
+
+  a.openEditUser = function (evt, id) {
+    return openModal({
+      targetEvent: evt,
+      template: require('./users/user.pug')({edit: true}),
+      controller: require('./users/editUser/editUser.ctrl.js'),
+      resolve: {id},
+      scope: {
+        modal: {title: 'Editar usuario'}
+      },
+      size: 'lg'
+    });
+  };
   return a;
 }

@@ -15,7 +15,7 @@ mixin formGroupSelect(name, model, form, options, nameUp)
   - var modelName = model + '.' + name;
   md-input-container(class!=attributes.class, flex-gt-sm)
     label #{nameUp}
-    md-select(ng-model=modelName)
+    md-select(ng-model=modelName, required, name=name)
       md-option(ng-repeat=`item in ${options.model}` value=`{{item.${options.value}}}`)
         | {{item.#{options.view}}}
     br
@@ -69,7 +69,7 @@ mixin formGroupDate(name, model, form, nameUp)
     input.hidden(type='text', name='#{name}', ng-model='#{modelName}' ,ng-init="#{modelNameChange}", ng-required='true')
 
 mixin form(name, submit, msg)
-  form(name=name, ng-submit=submit)
+  form(name=name, novalidate, ng-submit=`${name}.$valid && ${submit}`)
     block
     md-button.md-raised.md-raised.md-primary(md-colors="{background: 'blue'}", type='submit')
       | #{msg}
