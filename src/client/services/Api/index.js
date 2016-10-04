@@ -71,6 +71,9 @@ function albApi($mdToast, $http) {
   a.users = require('./users.js')($http, getData);
   a.types = require('./types.js')($http, getData);
   a.options = require('./options.js')($http, getData);
+  a.login = (user) => getData($http.post('/api/login', user));
+  a.session = () => getData($http.get('/api/session'));
+  a.unLogin = () => getData($http.get('/api/401'));
 
   return a;
 }

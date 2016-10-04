@@ -1,68 +1,53 @@
 const passport = require('passport');
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 const LocalStrategy = require('passport-local').Strategy;
-const config = require('./environment');
+// const config = require('./environment');
 const userModel = require('../api/users/users.mdl.js');
+const password = require('../components/utils/password.js');
 
-function TwitterStrategyCallback(token, tokenSecret, profile, done) {
-  let userProfile = {
-    username: profile._json.screen_name,
-    displayName: profile._json.name,
-    email: profile._json.email,
-    twitterID: profile._json.id
-  };
-  userModel.getByTwitterID(userProfile.twitterID, onGetUser);
-
-  function onGetUser(result) {
-    console.log('getByTwitterID', result);
-    if (result.code !== 0) {
-      return done(result);
-    }
-    if (result.data.length === 0) {
-      return userModel.post(userProfile, onPost);
-    }
-    let user = result.data[0];
-    userProfile._id = user._id;
-    jwt.sign({_id: user._id}, config.secret, {}, onSign);
-  }
-  function onPost (result) {
-    if (result.code !== 0) {
-      return done(result);
-    }
-
-    jwt.sign({_id: result.data}, config.secret, {}, onSign);
-  }
-  
-  function onSign(err, token) {
-    if (err) {
-      return done(err);
-    }
-    return done(null, {
-      _id: userProfile._id,
-      token
+function LocalStrategyCallback(email, pass, done) {
+  userModel.getOneEmailPassword(email).then(user =>{
+    if (!user) { return done(null, false); }
+    password.compare(pass, user.pass).then( isEqual => {
+      if (!isEqual) { return done(null, false); }
+      return done(null, user);
     });
-  }
+  }).catch(err => {
+    done(err);
+    return done(err);
+  });
 }
 
-//const localStrategy = new LocalStrategy(config.auth.twitter,TwitterStrategyCallback);
+const localStrategy = new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password',
+}, LocalStrategyCallback);
 
 const serializeUser = function(user, cb) {
   console.log('serializeUser', user);
-  cb(null, user);
+  cb(null, user.id_user);
 };
 
-const deserializeUser = function(obj, cb) {
-  userModel.getOne(obj._id, function (result) {
-    cb(result.description, result.data);
-  });
+const deserializeUser = function(id_user, cb) {
+  console.log('deserializeUser', id_user);
+  userModel.getOne(id_user)
+    .then(user => {
+      console.log('getOne');
+      return user;
+    })
+    .then(user => cb(null, user))
+    .catch(err => {
+      console.log('deserializeUser err', err);
+      cb(err);
+    });
 };
 
 module.exports = function (app) {
-  // passport.use(localStrategy);
-  // passport.serializeUser(serializeUser);
-  // passport.deserializeUser(deserializeUser);
-  // app.use(passport.initialize());
-  // app.use(passport.session());
+  passport.use(localStrategy);
+  passport.serializeUser(serializeUser);
+  passport.deserializeUser(deserializeUser);
+  app.use(passport.initialize());
+  app.use(passport.session());
 };
 
 module.exports.passport = passport;

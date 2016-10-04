@@ -1,5 +1,18 @@
 const connect = require("../../components/connect.js");
 
+
+/**
+ * getOneEmailPassword
+ * 
+ * @desc devuelve un solo elemento
+ * @param {String} email
+ */
+exports.getOneEmailPassword = function(id) {
+  return connect.query('call sp_sel_sys_user_email_password( ? )', id)
+    .then(rows => rows[0][0]);
+};
+
+
 /**
  * getOne
  * 

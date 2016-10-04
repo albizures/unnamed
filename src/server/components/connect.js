@@ -16,6 +16,7 @@ pool.on('error', function () {
   console.log('error');
 });
 
+exports.pool = pool;
 
 exports.query = function (query, data) {
   let {promise, resolve, reject} = defer.createDefer();
