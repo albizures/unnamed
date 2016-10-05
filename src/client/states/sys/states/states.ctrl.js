@@ -1,8 +1,28 @@
 
 /*@ngInject*/
 module.exports = function ($scope, albModals, albApi) {
-  albApi.configTable($scope);
+  $scope.selected = [];
+  $scope.filter = {
+    options: {
+      debounce: 500
+    }
+  };
+  $scope.limitOptions = [5, 10, 15];
+  $scope.query = {
+    order: 'name',
+    limit: 5,
+    page: 1
+  };
 
+  $scope.removeFilter = function () {
+    $scope.filter.show = false;
+    $scope.query.filter = '';
+    
+    if ($scope.filter.form.$dirty) {
+      $scope.filter.form.$setPristine();
+    }
+  };
+  console.log($scope);
   $scope.add = function (evt) {
     albModals.openAddState(evt).then($scope.get);
   };

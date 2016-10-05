@@ -31,5 +31,6 @@ require('./directives/albCompareTo/albCompareTo.js').directive(APP);
 
 require('./services/modals')(APP);
 require('./services/Api')(APP);
+require('./services/filters')(APP);
 
 APP.directive(require('./directives/modelTeeth/modelTeeth.js').name, require('./directives/modelTeeth/modelTeeth.js').fn);

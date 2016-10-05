@@ -21,9 +21,10 @@ function main ($urlRouterProvider, $locationProvider) {
 // injector
 APP.config(require('./states/main/index.js'));
 APP.config(require('./states/sys/index.js'));
-APP.config(require('./states/sys/options/index.js'));
 APP.config(require('./states/sys/orgs/index.js'));
-APP.config(require('./states/sys/roles/index.js'));
+APP.config(require('./states/sys/options/index.js'));
 APP.config(require('./states/sys/states/index.js'));
 APP.config(require('./states/sys/types/index.js'));
+APP.config(require('./states/sys/roles/index.js'));
+APP.config(require('./states/sys/users/index.js'));
 // endinjector

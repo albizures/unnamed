@@ -30,7 +30,7 @@ mixin table_crud(name, model, columns, filter)
             each column in columns
               th(md-column, md-numeric=column.isNumber, width=column.width, md-order-by=column.model) #{column.name || column.model}
         tbody(md-body)
-          tr(md-row, md-select="item", ng-repeat=`item in ${model} | orderBy:query.order | filter: ${filter}`)
+          tr(md-row, md-select="item", ng-repeat=`item in ${model} | orderBy:query.order | albTable: ${filter}`)
             each column in columns
               td(md-cell) {{item.#{column.model}}}
     md-table-pagination(md-limit='query.limit', md-limit-options='[5, 10, 15]', md-page='query.page', md-total='{{desserts.count}}', md-on-paginate='getDesserts', md-page-select='')

@@ -5,9 +5,9 @@ div
     'Roles',
     'roles',
     [
-      {name: 'ID',     model: 'id_state', isNumber: true, width: 50},
+      {name: 'ID',     model: 'id_role', isNumber: true, width: 50},
       {name: 'Nombre', model: 'name'},
       {name: 'Descripcion', model: 'description'}
     ],
-    '{name: query.filter, description: query.filter}'
+    '[query.filter, "id_role", "name", "description"]'
   )
