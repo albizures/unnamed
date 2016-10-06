@@ -68,6 +68,18 @@ function albModals($rootScope, $timeout, $mdPanel) {
     });
   };
 
+  a.openEditOptionsRole = function (evt, role) {
+    return openModal({
+      targetEvent: evt,
+      template: require('./roles/editOptions/editOptions.pug')(),
+      controller: require('./roles/editOptions/editOptions.ctrl.js'),
+      resolve: {role},
+      scope: {
+        modal: {title: 'Editar opciones'}
+      } 
+    });
+  };
+
   a.openAddState = function (evt) {
     return openModal({
       targetEvent: evt,
