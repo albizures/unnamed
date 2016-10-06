@@ -1,6 +1,17 @@
 const model = require('./users.mdl.js');
 const password = require('../../components/utils/password.js');
 
+
+exports.getOptions = function (req, res) {
+  model.getOptions(req.user.id_user)
+  .then(result => res.json(result))
+  .catch(err => {
+    console.log(err);
+    err.userMsg = 'Ocurrio un error';
+    res.status(500).json(err);
+  });
+};
+
 exports.getAll = function (req, res) {
   model.getAll().then(result => {
     res.json(result);

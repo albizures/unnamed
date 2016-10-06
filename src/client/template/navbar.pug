@@ -1,48 +1,8 @@
-//-nav(class="navbar navbar-default navbar-fixed-top")
-  div(class="container")
-    include ./navbarHeader.pug
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      ul.nav.navbar-nav
-        li.active
-          a(href='#')
-            | Link 
-            span.sr-only (current)
-        li
-          a(href='#') Link
-        li.dropdown
-          a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-            | Dropdown 
-            span.caret
-          ul.dropdown-menu
-            li
-              a(href='#') Action
-            li
-              a(href='#') Another action
-            li
-              a(href='#') Something else here
-            li.divider(role='separator')
-            li
-              a(href='#') Separated link
-            li.divider(role='separator')
-            li
-              a(href='#') One more separated link
-     
-      ul.nav.navbar-nav.navbar-right
-        li(uib-dropdown)
-          a(uib-dropdown-toggle)
-            | User 
-            span.caret
-          ul(uib-dropdown-menu)
-            li
-              a(href='#') Configuracion
-            li.divider(role='separator')
-            li
-              a(href='#') Salir
 
-
-md-nav-bar(md-selected-nav-item='currentNavItem', nav-bar-aria-label='navigation links')
-  md-toolbar-filler(layout="" layout-align="center center")
-    md-icon.glyphicon(md-font-icon="glyphicon-home", ng-style='{"font-size": "36px"}')
-  md-nav-item(md-nav-sref="sys", name='sys', ng-click) Page One
-  md-nav-item(md-nav-sref="sys.states", name='sys.states') Page Two
-  md-nav-item(md-nav-sref="sys.roles", name='sys.roles') Page Three
+.nav-bar(ng-controller='NavBar', )
+  md-toolbar.md-menu-toolbar
+    div(layout="row")
+      md-toolbar-filler(layout="" layout-align="center center")
+        md-icon home
+      md-nav-bar(md-selected-nav-item='currentNavItem', nav-bar-aria-label='navigation links')
+        md-nav-item(ng-repeat='tab in tabs', md-nav-sref='{{tab.name}}', name='{{tab.name}}') {{tab.title}}

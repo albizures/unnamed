@@ -29,6 +29,8 @@ require('./config.js')(APP);
 require('./directives/albSpinner/albSpinner.js').directive(APP);
 require('./directives/albCompareTo/albCompareTo.js').directive(APP);
 
+require('./navbar.js')(APP);
+
 require('./services/modals')(APP);
 require('./services/Api')(APP);
 require('./services/filters')(APP);

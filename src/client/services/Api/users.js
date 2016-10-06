@@ -8,6 +8,7 @@ module.exports = function ($http, getData) {
   // ################ GET's ################
   a.getAll = () => getData($http.get('/api/users'));
   a.getOne = id => getData($http.get('/api/users/' + id));
+  a.getOptions = () => getData($http.get('/api/users/options'));
 
   // ################ PUT's ################
   a.put = (id, user) => getData($http.put('/api/users/' + id, user));

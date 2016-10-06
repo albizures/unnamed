@@ -1,6 +1,19 @@
 const connect = require("../../components/connect.js");
 
 
+
+/**
+ * getOptions
+ * 
+ * @desc devuelve las opciones de un usuario
+ * @param {Number} id
+ */
+exports.getOptions = function(id) {
+  return connect.query('call sp_sel_sys_user_option( ? )', id)
+    .then(rows => rows[0]);
+};
+
+
 /**
  * getOneEmailPassword
  * 
