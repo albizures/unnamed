@@ -1,0 +1,35 @@
+include ../../../template/mixins/form.pug
+
+section(layout="row", flex, style='height: 100%;')
+  md-sidenav.md-sidenav-left(md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="2")
+    div(ng-if='!loadUser', layout="column", layout-align="center center", style='height: 100%;')
+      md-progress-circular(md-mode="indeterminate", flex="50")
+    .md-padding(ng-show='loadUser')
+      h3 Paciente
+      .md-inline-form
+          +formGroup('first_name', 'user', 'form', 'text', 'Nombre')(disabled=true, class='md-block')
+          +formGroup('last_name', 'user', 'form', 'text', 'Apellido')(disabled=true, class='md-block')
+  md-content(flex='', layout-padding='')
+    model-teeth(alb-select-teeth='onSelectTeeth', alb-elements='getElements')
+  md-sidenav.md-sidenav-left(md-component-id="right" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="2")
+    .md-padding(layout="column", layout-align="center center", style='height: 100%;', ng-show='!currentTeeth')
+      .md-caption(flex="40")
+        | Seleccion un diente para ver o ingresar informacion
+    .md-padding(ng-show='currentTeeth')
+      md-button.md-icon-button(style='float:right',aria-label="Close", ng-click='close()')
+        md-icon close
+      p.md-body-1
+        span.md-body-2 Diente: 
+        | {{currentTeeth.name}}
+      .md-inline-form
+        +form('form', 'add()', 'Agregar')
+          +formGroup('title', 'teeth', 'form', 'text', 'Titulo')(class='md-block')
+          +formGroupTextarea('description', 'teeth', 'Descripcion')(class='md-block')
+      md-list(flex)
+        md-subheader(class="md-no-sticky") Historial: {{(actions[currentTeeth.key].length || 0) }} elementos 
+        md-list-item.md-2-line.md-whiteframe-1dp(ng-repeat='action in actions[currentTeeth.key] track by action.index', ng-click="null")
+          div(class="md-list-item-text")
+            h3 {{ action.title }}
+            h4 {{ action.description }}
+            p
+              span.md-caption {{ action.date.format('LLL') }}

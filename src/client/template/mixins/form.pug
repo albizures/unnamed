@@ -19,7 +19,18 @@ mixin formGroupSelect(name, model, form, options, nameUp)
       md-option(ng-repeat=`item in ${options.model}` value=`{{item.${options.value}}}`)
         | {{item.#{options.view}}}
     br
-
+mixin formGroupTextarea(name, model, nameUp)
+  - nameUp = nameUp || name[0].toUpperCase() + name.slice(1);
+  md-input-container(class!=attributes.class, flex-gt-sm)
+    label #{nameUp}
+    textarea(
+      ng-model=model + '.' + name,
+      md-maxlength="150",
+      md-select-on-focus
+      disabled=attributes.disabled
+      required
+    )
+      //- rows="5",
 mixin formGroupRadio(name, model, form)
   - nameUp = nameUp || name[0].toUpperCase() + name.slice(1);
   - var formName = form + '.' + name;

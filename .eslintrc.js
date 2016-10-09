@@ -9,7 +9,7 @@ module.exports = {
   },
   parser: 'babel-eslint',
   rules: {
-    'no-undefined': 'error',
+    'no-undef': 'error',
     eqeqeq: ['error', 'always'],
     strict: ['error', 'global'],
     'no-unused-vars': ['error', {

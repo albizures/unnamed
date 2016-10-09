@@ -1,0 +1,19 @@
+include ../../../template/mixins/table.pug
+
+div
+  +table_crud(
+    'Pacientes',
+    'users',
+    [
+      {name: 'ID',     model: 'id_user', isNumber: true, width: 50},
+      {name: 'Nombre', model: 'first_name'},
+      {name: 'Apellido', model: 'last_name'},
+    ],
+    '[query.filter, "id_user", "first_name", "last_name"]'
+  )
+    md-button.md-icon-button(ui-sref='odo.patient({id: selected[0].id_user})')
+      md-icon insert_emoticon
+    md-button.md-icon-button(ng-click='edit($event)')
+      md-icon edit
+    //- md-button.md-icon-button(ng-click='delete($event)')
+      md-icon delete

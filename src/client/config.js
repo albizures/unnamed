@@ -5,6 +5,7 @@ module.exports = function (APP) {
   APP.config(main);
   
   require('./states/sys')(APP);
+  require('./states/odo')(APP);
 };
 
 
