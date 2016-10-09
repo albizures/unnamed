@@ -1,8 +1,0 @@
-
-.nav-bar(ng-controller='NavBar', )
-  md-toolbar.md-menu-toolbar
-    div(layout="row")
-      md-toolbar-filler(layout="" layout-align="center center")
-        md-icon home
-      md-nav-bar(md-selected-nav-item='currentNavItem', nav-bar-aria-label='navigation links')
-        md-nav-item(ng-repeat='tab in tabs', md-nav-sref='{{tab.name}}', name='{{tab.name}}') {{tab.title}}

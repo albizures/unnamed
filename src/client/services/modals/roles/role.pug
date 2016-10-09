@@ -1,9 +1,0 @@
-extends ../layout.pug
-
-block body
-  .md-inline-form
-    +form('form','submitFrom(form)', 'Guardar')
-      .row
-        .col-xs-12
-          +formGroup('name', 'role', 'form', 'text', 'Nombre')(class='md-block')
-          +formGroup('description', 'role', 'form', 'text', 'Descripcion')(class='md-block')
