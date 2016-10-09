@@ -1,0 +1,334 @@
+md-list-item.active {
+  background: #303f9f;
+  color: #fff;
+}
+.model-teeth .content-model {
+  width: 400px;
+  height: 400px;
+  position: relative;
+}
+.model-teeth .content-model .content-areas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.model-teeth .content-model .content-areas .area {
+  position: absolute;
+  border: 0;
+  background: transparent;
+  outline: 0;
+}
+.model-teeth .content-model .content-areas .area:hover {
+  background: rgba(0,0,100,0.3);
+}
+.model-teeth .content-model img {
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+md-toolbar.md-table-toolbar form {
+  margin-left: 16px;
+}
+md-toolbar.md-table-toolbar form > input {
+  width: 100%;
+  margin: 0;
+  border: none;
+  color: rgba(0,0,0,0.87);
+}
+md-toolbar.md-table-toolbar form > input:focus {
+  outline: none;
+}
+md-toolbar.md-table-toolbar .ng-hide {
+  display: none;
+}
+md-toolbar.md-table-toolbar.alternate .md-toolbar-tools {
+  color: #1e88e5;
+  font-size: 16px;
+  justify-content: space-between;
+  background-color: #e3f2fd;
+}
+.nav-bar md-toolbar {
+  min-height: auto;
+}
+.spinner {
+  -webkit-animation: rotator 1.4s linear infinite;
+  animation: rotator 1.4s linear infinite;
+}
+.spinner .path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+@-webkit-keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+}
+@-webkit-keyframes colors {
+  0% {
+    stroke: #4285f4;
+  }
+  25% {
+    stroke: #de3e35;
+  }
+  50% {
+    stroke: #f7c223;
+  }
+  75% {
+    stroke: #1b9a59;
+  }
+  100% {
+    stroke: #4285f4;
+  }
+}
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+    transform: rotate(450deg);
+  }
+}
+@-moz-keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+}
+@-webkit-keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+}
+@-o-keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+}
+@keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+}
+@-moz-keyframes colors {
+  0% {
+    stroke: #4285f4;
+  }
+  25% {
+    stroke: #de3e35;
+  }
+  50% {
+    stroke: #f7c223;
+  }
+  75% {
+    stroke: #1b9a59;
+  }
+  100% {
+    stroke: #4285f4;
+  }
+}
+@-webkit-keyframes colors {
+  0% {
+    stroke: #4285f4;
+  }
+  25% {
+    stroke: #de3e35;
+  }
+  50% {
+    stroke: #f7c223;
+  }
+  75% {
+    stroke: #1b9a59;
+  }
+  100% {
+    stroke: #4285f4;
+  }
+}
+@-o-keyframes colors {
+  0% {
+    stroke: #4285f4;
+  }
+  25% {
+    stroke: #de3e35;
+  }
+  50% {
+    stroke: #f7c223;
+  }
+  75% {
+    stroke: #1b9a59;
+  }
+  100% {
+    stroke: #4285f4;
+  }
+}
+@keyframes colors {
+  0% {
+    stroke: #4285f4;
+  }
+  25% {
+    stroke: #de3e35;
+  }
+  50% {
+    stroke: #f7c223;
+  }
+  75% {
+    stroke: #1b9a59;
+  }
+  100% {
+    stroke: #4285f4;
+  }
+}
+@-moz-keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+    transform: rotate(450deg);
+  }
+}
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+    transform: rotate(450deg);
+  }
+}
+@-o-keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+    transform: rotate(450deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+    transform: rotate(450deg);
+  }
+}
+.alb-modal {
+  overflow: hidden;
+  position: relative;
+  border-radius: 3px;
+  height: 80px;
+  min-width: 200px;
+  transition: height 0.5s, width 0.5s;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 26px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 26px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.1);
+}
+.alb-modal .alb-modal-content {
+  display: none;
+}
+.alb-modal .alb-modal-content .alb-modal-body {
+  padding: 15px 15px;
+}
+.alb-modal .loader {
+  width: 200px;
+  position: absolute;
+  height: 100%;
+  background: #fff;
+  left: 0;
+  top: 0;
+}
+.alb-modal .loader .spinner {
+  display: block;
+  margin: 20px auto;
+}
+.alb-modal.load {
+  width: 100%;
+  height: auto;
+}
+.alb-modal.load .alb-modal-content {
+  display: block;
+}
+.alb-modal.load .loader {
+  display: none;
+}
+.md-panel-outer-wrapper {
+  overflow: auto;
+}
+.alb-modal-lg {
+  width: 600px;
+}
+.alb-modal-sm {
+  width: 250px;
+}
+.alb-modal-md {
+  width: 400px;
+}
+.alb-modal-md,
+.alb-modal-sm,
+.alb-modal-lg {
+  position: absolute;
+}
+
+/*# sourceMappingURL=main.css.map*/
