@@ -7,6 +7,11 @@ module.exports = {
       'jsx': true
     }
   },
+  globals: {
+    'Promise': true,
+    'APP': true,
+    'angular': true
+  },
   parser: 'babel-eslint',
   rules: {
     'no-undef': 'error',
