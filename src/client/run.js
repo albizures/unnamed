@@ -1,17 +1,6 @@
 
 /*@ngInject*/
 module.exports = function($rootScope, $location, $mdDialog, $state) {
-  $rootScope.$on('event:auth-loginRequired', function() {
-    if ($location.$$path !== '/') {
-      if ($rootScope.currentUser && $rootScope.currentUser.usuario)
-        $location.path('/dashboard');
-      else {
-        $location.path('/');
-      }
-    }
-    return false;
-  });
-
   $rootScope.showConfirm = function(evt, msg, msgLarg) {
     var confirm = $mdDialog.confirm()
       .title(msg)
@@ -24,7 +13,12 @@ module.exports = function($rootScope, $location, $mdDialog, $state) {
     return $mdDialog.show(confirm);
   };
 
-  $rootScope.$on('event:auth-loginRequired', function () {
-    $state.go('main');
+  $rootScope.$on('event:auth-loginRequired', () => {
+    $state.go('login');
+  });
+
+  $rootScope.$on('$stateChangeError', () => {
+    alert('adfasdf');
+    $state.go('404');
   });
 };

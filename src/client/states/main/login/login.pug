@@ -1,0 +1,9 @@
+include ../../../template/mixins/form.pug
+
+section(layout="row")
+  md-card(flex="20", flex-offset="40", layout-padding)
+    h2 Iniciar sesion
+    .md-inline-form
+      +form('form','submitFrom(form)', 'ingresar')
+        +formGroup('email', 'user', 'form', 'text', 'Email')(class='md-block')
+        +formGroup('password', 'user', 'form', 'password', 'Contrseña')(class='md-block')
