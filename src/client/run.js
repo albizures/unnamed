@@ -1,10 +1,10 @@
 
 /*@ngInject*/
 module.exports = function($rootScope, $location, $mdDialog, $state) {
-  $rootScope.showConfirm = function(evt, msg, msgLarg) {
+  $rootScope.showConfirm = function(evt, msg, msgLarge) {
     var confirm = $mdDialog.confirm()
       .title(msg)
-      .textContent(msgLarg)
+      .textContent(msgLarge)
       .ariaLabel('Lucky day')
       .targetEvent(evt)
       .ok('Si')
@@ -15,10 +15,5 @@ module.exports = function($rootScope, $location, $mdDialog, $state) {
 
   $rootScope.$on('event:auth-loginRequired', () => {
     $state.go('login');
-  });
-
-  $rootScope.$on('$stateChangeError', () => {
-    alert('adfasdf');
-    $state.go('404');
   });
 };

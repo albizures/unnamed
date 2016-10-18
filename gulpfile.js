@@ -37,7 +37,7 @@ gulp.task('env', shell.task([
   `./env.sh`
 ]));
 
-gulp.task('webpack', ['clean', 'inject:js'], function (cb) {
+gulp.task('webpack', ['clean', /*'inject:js'*/], function (cb) {
   webpack(webpackConfig, function (err, stats) {
     if (err) {
       throw err; // hard error

@@ -14,6 +14,7 @@ module.exports = {
   },
   parser: 'babel-eslint',
   rules: {
+    'object-curly-spacing': ["error", "never"],
     'no-undef': 'error',
     eqeqeq: ['error', 'always'],
     strict: ['error', 'global'],

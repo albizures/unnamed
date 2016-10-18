@@ -8,7 +8,7 @@ router.use('/types/', require('./types/'));
 router.use('/orgs/', require('./orgs/'));
 router.use('/options/', require('./options/'));
 
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login' }), (req, res) => {
+router.post('/login', passport.authenticate('local', {failureRedirect: '/login'}), (req, res) => {
   res.redirect('/');
 });
   
