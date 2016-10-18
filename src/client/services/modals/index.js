@@ -179,7 +179,7 @@ function albModals($rootScope, $timeout, $mdPanel) {
   a.openAddUser = function (evt) {
     return openModal({
       targetEvent: evt,
-      template: require('./users/user.pug')({edit: true}),
+      template: require('./users/user.pug')({edit: false}),
       controller: require('./users/addUser/addUser.ctrl.js'),
       scope: {
         modal: {title: 'Agregar usuario'}

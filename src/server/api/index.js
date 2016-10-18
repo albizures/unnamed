@@ -9,7 +9,7 @@ router.use('/orgs/', require('./orgs/'));
 router.use('/options/', require('./options/'));
 
 router.post('/login', passport.authenticate('local', {failureRedirect: '/login'}), (req, res) => {
-  res.redirect('/');
+  res.json(res.user);
 });
   
 router.get('/logout', function(req, res){
