@@ -5,15 +5,22 @@ module.exports = function (APP) {
 };
 
 /*@ngInject*/
-function NavBar($rootScope, albApi) {
-  $rootScope.tabs = [];
+function NavBar($rootScope, albApi, $state, $scope) {
+  $scope.tabs = [];
   albApi.users.getOptions().then(result => {
     for (var index = 0; index < result.length; index++) {
       var element = result[index];
       if (element.type_name === 'Menu') {
-        $rootScope.tabs.push(element);
+        $scope.tabs.push(element);
       }
     }
-    $rootScope.currentNavItem = $rootScope.tabs[0].name;
+    $scope.currentNavItem = $scope.tabs[0].name;
+    $state.go($scope.tabs[0].name);
   }).catch(albApi.toast.catch);
+
+  albApi.currentUser.then(user => $rootScope.currentUser = user);
+
+  $scope.logout = function () {
+    albApi.logout().then(() => location.href = '/login');
+  };
 }

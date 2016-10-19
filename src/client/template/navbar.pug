@@ -1,8 +1,20 @@
 
-.nav-bar(ng-controller='NavBar', )
+.nav-bar(ng-controller='NavBar')
   md-toolbar.md-menu-toolbar
     div(layout="row")
-      md-toolbar-filler(layout="" layout-align="center center")
+      md-toolbar-filler(layout="", layout-align="center center", flex='5')
         md-icon home
-      md-nav-bar(md-selected-nav-item='currentNavItem', nav-bar-aria-label='navigation links')
+      md-nav-bar(md-selected-nav-item='currentNavItem', nav-bar-aria-label='navigation links', flex='80')
         md-nav-item(ng-repeat='tab in tabs', md-nav-sref='{{tab.name}}', name='{{tab.name}}') {{tab.title}}
+      .session(layout="", layout-align="center center", flex='15')
+        md-menu(md-position-mode="target-right target", ng-show='currentUser')
+          md-button(aria-label="User menu", ng-click="$mdOpenMenu($event)")
+            | {{currentUser.first_name}} {{currentUser.last_name}}
+            md-icon(ng-style='{"font-size": "36px", height: "36px", width: "36px"}') person
+          md-menu-content
+            md-menu-item(ng-click='logout()')
+              md-button
+               div(layout="row" flex)
+                p(flex) Cerrar sesion
+                md-icon(md-menu-align-target style="margin: auto 0 auto 3px;")
+                  | exit_to_app

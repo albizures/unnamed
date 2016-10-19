@@ -14,6 +14,7 @@ module.exports = function($rootScope, $location, $mdDialog, $state) {
   };
 
   $rootScope.$on('event:auth-loginRequired', () => {
+    console.log('event:auth-loginRequired');
     $state.go('login');
   });
 };

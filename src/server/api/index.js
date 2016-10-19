@@ -23,8 +23,10 @@ router.get('/401', function (req, res) {
 });
 
 router.get('/session', function (req, res) {
-  console.log(req.user);
-  res.json(req.user);
+  if (req.user) {
+    return res.json(req.user);
+  }
+  res.status(401).end();
 });
 
 

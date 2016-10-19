@@ -9,31 +9,7 @@ module.exports = function (APP) {
 function albApi($mdToast, $http) {
   const a = {};
 
-
-  a.configTable = function ($scope) {
-    $scope.selected = [];
-    $scope.filter = {
-      options: {
-        debounce: 500
-      }
-    };
-    $scope.limitOptions = [5, 10, 15];
-    $scope.query = {
-      order: 'name',
-      limit: 5,
-      page: 1
-    };
-
-    $scope.removeFilter = function () {
-      $scope.filter.show = false;
-      $scope.query.filter = '';
-      
-      if ($scope.filter.form.$dirty) {
-        $scope.filter.form.$setPristine();
-      }
-    };
-  };
-
+  a.configTable = configTable;
 
   function openToast(msg, type) {
     type = type || a.toast.INFO;
@@ -64,7 +40,7 @@ function albApi($mdToast, $http) {
   };
 
   const getData = (request) => request.then(result => result.data);
-
+  
   a.roles = require('./roles.js')($http, getData);
   a.states = require('./states.js')($http, getData);
   a.orgs = require('./orgs.js')($http, getData);
@@ -72,8 +48,12 @@ function albApi($mdToast, $http) {
   a.types = require('./types.js')($http, getData);
   a.options = require('./options.js')($http, getData);
   a.login = (user) => getData($http.post('/api/login', user));
+  a.logout = () => getData($http.get('/api/logout'));
   a.session = () => getData($http.get('/api/session'));
   a.unLogin = () => getData($http.get('/api/401'));
+
+
+  a.currentUser = a.session();
 
   return a;
 }
@@ -83,6 +63,31 @@ const icons = {
   info: 'glyphicon-bell',
   error: 'glyphicon-alert'
 };
+
+function configTable($scope) {
+  $scope.selected = [];
+  $scope.filter = {
+    options: {
+      debounce: 500
+    }
+  };
+  $scope.limitOptions = [5, 10, 15];
+  $scope.query = {
+    order: 'name',
+    limit: 5,
+    page: 1
+  };
+
+  $scope.removeFilter = function () {
+    $scope.filter.show = false;
+    $scope.query.filter = '';
+    
+    if ($scope.filter.form.$dirty) {
+      $scope.filter.form.$setPristine();
+    }
+  };
+};
+
 
 /*@ngInject*/
 function toastCtrl($scope, $mdToast, msg, type) {
